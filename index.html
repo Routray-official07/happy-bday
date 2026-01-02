@@ -1,56 +1,122 @@
 <!DOCTYPE html>
-<!-- Created By CodingLab - www.codinglabweb.com -->
-<html lang="en" dir="ltr">
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
-    <title> Responsive Contact Us Form  | CodingLab </title>
+    <title>Study Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Fontawesome CDN Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+</head>
+
 <body>
-  <div class="container">
-    <div class="content">
-      <div class="left-side">
-        <div class="address details">
-          <i class="fas fa-map-marker-alt"></i>
-          <div class="topic">Address</div>
-          <div class="text-one">Surkhet, NP12</div>
-          <div class="text-two">Birendranagar 06</div>
-        </div>
-        <div class="phone details">
-          <i class="fas fa-phone-alt"></i>
-          <div class="topic">Phone</div>
-          <div class="text-one">+0098 9893 5647</div>
-          <div class="text-two">+0096 3434 5678</div>
-        </div>
-        <div class="email details">
-          <i class="fas fa-envelope"></i>
-          <div class="topic">Email</div>
-          <div class="text-one">codinglab@gmail.com</div>
-          <div class="text-two">info.codinglab@gmail.com</div>
-        </div>
-      </div>
-      <div class="right-side">
-        <div class="topic-text">Send us a message</div>
-        <p>If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you.</p>
-      <form action="#">
-        <div class="input-box">
-          <input type="text" placeholder="Enter your name">
-        </div>
-        <div class="input-box">
-          <input type="text" placeholder="Enter your email">
-        </div>
-        <div class="input-box message-box">
-          
-        </div>
-        <div class="button">
-          <input type="button" value="Send Now" >
-        </div>
-      </form>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <h2>Study Dashboard</h2>
+            <nav>
+                <button class="nav-btn active" onclick="showPage('dashboard',this)">Dashboard</button>
+                <button class="nav-btn" onclick="showPage('week',this)">Weekly Routine</button>
+                <button class="nav-btn" onclick="showPage('daily',this)">Daily Format</button>
+                <button class="nav-btn" onclick="showPage('sunday',this)">Sunday Routine</button>
+                <button class="nav-btn" onclick="showPage('tasks',this)">Tasks</button>
+            </nav>
+        </aside>
+
+        <!-- CONTENT -->
+        <main class="content">
+
+            <!-- DASHBOARD (ALL IN ONE) -->
+            <section id="dashboard" class="page active">
+
+                <!-- TOP -->
+                <div class="top-center">
+                    <div class="card">
+                        <h1 id="greeting">Good Evening 👋</h1>
+                        <p id="datetime"></p>
+                    </div>
+
+                    <div class="card">
+                        <span class="slot-badge" id="slotName">Slot 1</span>
+                        <h2 id="subjectName">Math</h2>
+                        <div id="timer">60:00</div>
+                        <div class="timer-actions">
+                            <button class="start" onclick="startTimer()">Start</button>
+                            <button class="reset" onclick="resetTimer()">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TODAY SLOTS -->
+                <h2 class="section-title">Today’s Slots</h2>
+                <div class="grid">
+                    <div class="mini-card">8:00–9:00<br><b>Math</b></div>
+                    <div class="mini-card">9:15–10:30<br><b>Physics / Chemistry</b></div>
+                    <div class="mini-card">10:30–11:30<br><b>English / Stats</b></div>
+                </div>
+
+                <!-- WEEK ROUTINE -->
+                <h2 class="section-title">Weekly Routine</h2>
+                <div class="week-grid" id="weekGridMini"></div>
+
+                <!-- DAILY FORMAT -->
+                <h2 class="section-title">Daily Study Format</h2>
+                <div class="format-card">
+                    <b>Day 1–2:</b> Theory / Lectures
+                    <br><b>Day 3–4:</b> Problems
+                    <br><b>Day 5:</b> Revision + Test
+                    <br><b>Day 6:</b> Weak Topics
+                    <br><b>Day 7:</b> Rest + Planning
+                </div>
+
+                <!-- SUNDAY -->
+                <h2 class="section-title">Sunday Plan</h2>
+                <div class="format-card center">
+                    Light Math • Revision • Planning • Rest
+                </div>
+
+                <!-- TASKS -->
+                <h2 class="section-title">Tasks</h2>
+                <div class="task-box">
+                    <input id="taskInputDash" placeholder="Add task">
+                    <button onclick="addTaskFromDashboard()">Add</button>
+                </div>
+                <ul id="taskListDash"></ul>
+
+            </section>
+
+            <!-- OTHER PAGES (FULL VIEW) -->
+            <section id="week" class="page">
+                <h2 class="page-title">Weekly Routine</h2>
+                <div class="week-grid" id="weekGrid"></div>
+            </section>
+
+            <section id="daily" class="page">
+                <h2 class="page-title">Daily Format</h2>
+                <div id="dailyFull"></div>
+            </section>
+
+            <section id="sunday" class="page">
+                <h2 class="page-title">Sunday Routine</h2>
+                <div class="day-card center">
+                    Math (Light) • Revision • Planning • Rest
+                </div>
+            </section>
+
+            <section id="tasks" class="page">
+                <h2 class="page-title">Task Manager</h2>
+                <div class="task-box">
+                    <input id="taskInput" placeholder="Enter task">
+                    <button onclick="addTask()">Add</button>
+                </div>
+                <ul id="taskList"></ul>
+            </section>
+
+        </main>
     </div>
-    </div>
-  </div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
