@@ -91,11 +91,11 @@ loadSlot(1);
 ========================= */
 const routine = {
     Monday: ["Math", "Physics", "English"],
-    Tuesday: ["Math", "Chemistry", "Statistics"],
+    Tuesday: ["Math", "Org. Chemistry", "Statistics"],
     Wednesday: ["Math", "Physics", "Alt English"],
     Thursday: ["Math", "Chemistry", "English"],
     Friday: ["Math", "Physics", "Statistics"],
-    Saturday: ["Math", "Revision", "English"],
+    Saturday: ["Math", "Chemistry", "English"],
     Sunday: ["Math", "Light Revision", "Planning"]
 };
 
@@ -191,4 +191,5 @@ function addTaskFromDashboard() {
     li.onclick = () => li.remove();
     document.getElementById("taskListDash").appendChild(li);
     i.value = "";
+
 }
