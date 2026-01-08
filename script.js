@@ -26,9 +26,11 @@ function updateDateTime() {
     document.getElementById("datetime").innerText =
         `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()} • ${hrs}:${mins} ${ampm}`;
 
-    let greet = "Good Evening 🌙";
+    let greet = "";
     if (now.getHours() < 12) greet = "Good Morning ☀️";
     else if (now.getHours() < 17) greet = "Good Afternoon 🌤️";
+    else if (now.getHours() < 22) greet = "Good Evening 🌙";
+    else greet = "Good Night 🌙";
 
     document.getElementById("greeting").innerText = greet;
 }
@@ -193,3 +195,4 @@ function addTaskFromDashboard() {
     i.value = "";
 
 }
+
